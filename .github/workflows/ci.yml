@@ -1,0 +1,22 @@
+# remudero-sandbox CI — the green-merge gate mirror (T1B pattern).
+#
+# The sandbox has no build; this trivial job EXISTS only so branch protection has a
+# real `ci` context that runs and passes on every PR (a required check nothing emits
+# would deadlock merges). REQUIRED-CHECK NAME = THE JOB NAME (`ci`), read from the API
+# after the first run, never guessed. Mirrors craigoley/remudero's required contexts.
+name: CI
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: ok
+        run: echo ok
