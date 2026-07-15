@@ -1,0 +1,47 @@
+# remudero-sandbox commissioning plan — trivial, HEADLESS, gated tasks the daemon
+# drains during W1-T12d live commissioning. Each proof-shaped (observable diff proof),
+# DAG-chained so the daemon exercises dependency ordering. Gated by ci + remudero-review.
+- id: SBX-T1
+  title: "Append 'Daemon drill line 1.' to README.md"
+  repo: remudero-sandbox
+  depends_on: []
+  type: implement
+  verify: auto
+  risk: low
+  budget_usd: 100.00
+  origin: architect
+  acceptance:
+    - claim: "README.md gains the exact line 'Daemon drill line 1.'"
+      proof: "the PR diff appends the line 'Daemon drill line 1.' to README.md"
+  status: queued
+  attempts: 0
+
+- id: SBX-T2
+  title: "Append 'Daemon drill line 2.' to README.md"
+  repo: remudero-sandbox
+  depends_on: [SBX-T1]
+  type: implement
+  verify: auto
+  risk: low
+  budget_usd: 100.00
+  origin: architect
+  acceptance:
+    - claim: "README.md gains the exact line 'Daemon drill line 2.'"
+      proof: "the PR diff appends the line 'Daemon drill line 2.' to README.md"
+  status: queued
+  attempts: 0
+
+- id: SBX-T3
+  title: "Create NOTES.md with a single commissioning line"
+  repo: remudero-sandbox
+  depends_on: [SBX-T2]
+  type: implement
+  verify: auto
+  risk: low
+  budget_usd: 100.00
+  origin: architect
+  acceptance:
+    - claim: "a new file NOTES.md is created containing the line 'commissioned by the daemon'"
+      proof: "the PR diff adds NOTES.md whose content includes 'commissioned by the daemon'"
+  status: queued
+  attempts: 0
